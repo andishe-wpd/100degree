@@ -32,7 +32,7 @@ export default function AuthPage() {
 
     try {
       // Validate form
-      const validatedData = loginSchema.parse(formData);
+      loginSchema.parse(formData);
       setIsLoading(true);
 
       // Fetch random user
@@ -66,10 +66,12 @@ export default function AuthPage() {
         setNetworkError("Connection error. Please try again.");
       } else if (error instanceof Error) {
         // Zod validation error
-        const zodError = error as any;
+        const zodError = error as {
+          errors?: Array<{ path: string[]; message: string }>;
+        };
         if (zodError.errors) {
           const fieldErrors: Partial<LoginValues> = {};
-          zodError.errors.forEach((err: any) => {
+          zodError.errors.forEach((err) => {
             fieldErrors[err.path[0] as keyof LoginValues] = err.message;
           });
           setErrors(fieldErrors);

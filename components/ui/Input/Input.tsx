@@ -29,12 +29,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const [inputValue, setInputValue] = useState(value || "");
+    const [inputValue, setInputValue] = useState(String(value || ""));
     const [isFocused, setIsFocused] = useState(false);
 
     // Update internal state when external value changes
     useEffect(() => {
-      setInputValue(value || "");
+      setInputValue(String(value || ""));
     }, [value]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

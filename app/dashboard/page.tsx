@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useAuth } from "@/lib/auth/useAuth";
 import { Button } from "@/components/ui/Button";
 import styles from "./Dashboard.module.scss";
@@ -57,9 +58,11 @@ export default function DashboardPage() {
       <div className={styles.content}>
         <div className={styles.userCard}>
           {user.avatar && (
-            <img
+            <Image
               src={user.avatar}
               alt={`${user.name} avatar`}
+              width={80}
+              height={80}
               className={styles.avatar}
             />
           )}

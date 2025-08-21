@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   // Enable static optimization
   output: "standalone",
 
+  // Set output file tracing root to fix workspace warning
+  outputFileTracingRoot: process.cwd(),
+
   // Optimize images
   images: {
     domains: ["randomuser.me"],
@@ -15,7 +18,7 @@ const nextConfig: NextConfig = {
 
   // Optimize bundle
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled due to critters module issues
   },
 
   // Security headers

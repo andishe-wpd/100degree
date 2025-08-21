@@ -14,7 +14,7 @@ A modern, responsive authentication flow built with Next.js, TypeScript, and SCS
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-app.vercel.app)
+[View Live Demo](https://100degree.vercel.app)
 
 ## 🛠️ Tech Stack
 
