@@ -12,6 +12,12 @@
     transition: color 0.2s ease;
   }
 
+  .inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
   .input {
     padding: 0.875rem 1rem;
     border: 2px solid #374151;
@@ -21,6 +27,8 @@
     background-color: #1f2937;
     color: #ffffff;
     backdrop-filter: blur(10px);
+    width: 100%;
+    padding-right: 3rem; // Space for indicators
 
     &:focus {
       outline: none;
@@ -34,12 +42,35 @@
       background-color: #1a1a1a;
     }
 
+    &.focused {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+
     &.error {
       border-color: #ef4444;
 
       &:focus {
         border-color: #ef4444;
         box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+      }
+    }
+
+    &.valid {
+      border-color: #10b981;
+
+      &:focus {
+        border-color: #10b981;
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+      }
+    }
+
+    &.invalid {
+      border-color: #f59e0b;
+
+      &:focus {
+        border-color: #f59e0b;
+        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
       }
     }
 
@@ -53,11 +84,82 @@
     }
   }
 
+  .inputIndicators {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: none;
+
+    .characterCount {
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .validationIcon {
+      width: 1.25rem;
+      height: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &.valid {
+        color: #10b981;
+        background-color: rgba(16, 185, 129, 0.1);
+      }
+
+      &.invalid {
+        color: #f59e0b;
+        background-color: rgba(245, 158, 11, 0.1);
+      }
+
+      &.incomplete {
+        color: #6b7280;
+        background-color: rgba(107, 114, 128, 0.1);
+      }
+    }
+  }
+
   .errorMessage {
     font-size: 0.75rem;
     color: #f87171;
     margin-top: 0.25rem;
     animation: fadeIn 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &::before {
+      content: "⚠";
+      font-size: 0.875rem;
+    }
+  }
+
+  .helpText {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 0.25rem;
+    animation: fadeIn 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &::before {
+      content: "ℹ";
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
   }
 }
 
@@ -69,5 +171,29 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Focus ring animation
+.input:focus {
+  animation: focusRing 0.2s ease-out;
+}
+
+@keyframes focusRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
   }
 }

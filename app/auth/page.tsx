@@ -103,6 +103,10 @@ export default function AuthPage() {
             label="Phone Number"
             error={errors.phone}
             disabled={isLoading}
+            maxLength={11}
+            autoComplete="tel"
+            inputMode="numeric"
+            pattern="[0-9]*"
           />
 
           <div className={styles.actions}>
