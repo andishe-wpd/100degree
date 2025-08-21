@@ -1,0 +1,73 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+
+  .label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e5e7eb;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .input {
+    padding: 0.875rem 1rem;
+    border: 2px solid #374151;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #1f2937;
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+      background-color: #111827;
+    }
+
+    &:hover {
+      border-color: #4b5563;
+      background-color: #1a1a1a;
+    }
+
+    &.error {
+      border-color: #ef4444;
+
+      &:focus {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+      }
+    }
+
+    &::placeholder {
+      color: #6b7280;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .errorMessage {
+    font-size: 0.75rem;
+    color: #f87171;
+    margin-top: 0.25rem;
+    animation: fadeIn 0.3s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
