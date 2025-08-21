@@ -115,12 +115,14 @@ npm run start
 ## 🎨 UI Components
 
 ### Enhanced Input Component
+
 - **Character Filtering**: Auto-removes non-digits
 - **Visual Feedback**: Color-coded validation states
 - **Character Counter**: Real-time length display
 - **Helpful Messages**: Contextual guidance
 
 ### Modern Button Component
+
 - **Loading States**: Animated spinners
 - **Hover Effects**: Smooth transitions
 - **Variants**: Primary and secondary styles
